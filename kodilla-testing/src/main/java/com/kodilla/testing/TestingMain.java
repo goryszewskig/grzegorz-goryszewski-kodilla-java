@@ -10,11 +10,14 @@ import java.util.Arrays;
 public class TestingMain {
     public static void main(String[] args){
 
-        ArrayList<Integer> myList = new ArrayList<Integer>(Arrays.asList(1,2,3,4,5,6,7));
-
-        OddNumbersExterminator oddNumbersExterminator = new OddNumbersExterminator();
-        oddNumbersExterminator.exterminate(myList);
-        System.out.println(myList);
+        Calculator calculator = new Calculator();
+        int addResult = calculator.add(180, 19);
+        int subResult = calculator.subtract(200, 150);
+        if ((addResult == 199) && (subResult == 50)) {
+            System.out.println("Calculator test OK");
+        } else {
+            System.out.println("Calculator has error!");
+        }
 
     }
 }

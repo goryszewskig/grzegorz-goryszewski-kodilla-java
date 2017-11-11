@@ -2,9 +2,6 @@ package com.kodilla.testing.calculator;
 
 public class Calculator {
 
-    private int x;
-    private int y;
-
     public Calculator(){
 
     }
