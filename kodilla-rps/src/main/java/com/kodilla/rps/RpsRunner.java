@@ -1,14 +1,13 @@
-package com.kodilla.stream.rockpaperscissors;
+package com.kodilla.rps;
 
 import java.util.Random;
 import java.util.Scanner;
-import java.util.stream.Stream;
 
-public class RockPaperScissors {
+public class RpsRunner {
     private static boolean playAgain(Scanner scanner){
-        System.out.println("Do You want to play again? Y(6),N(7)?");
-        switch (scanner.nextInt()){
-            case 6:
+        System.out.println("Do You want to play again (n) or end (x) ?");
+        switch (scanner.next()){
+            case "n":
                 System.out.println("Rock, Paper, Scissors!");
                 return true;
             default:
@@ -16,7 +15,6 @@ public class RockPaperScissors {
                 return false;
         }
     }
-
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         RPSPlayer computer = new RandomComputerPlayer(new Random());
@@ -27,7 +25,7 @@ public class RockPaperScissors {
             String com = computer.play();
             String player = human.play();
 
-            System.out.println(com + " 1<-> "+ player);
+            System.out.println(com + " <-> "+ player);
             if (player.equals(com)){
                 System.out.println("TIE!");
 

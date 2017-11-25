@@ -1,6 +1,4 @@
-package com.kodilla.stream.rockpaperscissors;
-
-import com.sun.javafx.scene.control.skin.ChoiceBoxSkin;
+package com.kodilla.rps;
 
 import java.util.Scanner;
 
@@ -15,7 +13,7 @@ public class HumanPlayer implements RPSPlayer {
     public String play() {
         System.out.println("Select 1,2,3 for Rock, Paper, Scissors");
         int choice = this.scanner.nextInt();
-        return OPTIONS[choice - 1];
+        return RPSPlayer.OPTIONS[choice - 1];
 
     }
 }

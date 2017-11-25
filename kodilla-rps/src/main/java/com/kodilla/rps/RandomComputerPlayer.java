@@ -1,4 +1,4 @@
-package com.kodilla.stream.rockpaperscissors;
+package com.kodilla.rps;
 
 import java.util.Random;
 
