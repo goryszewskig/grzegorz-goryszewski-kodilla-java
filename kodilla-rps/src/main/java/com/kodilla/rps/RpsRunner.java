@@ -4,42 +4,95 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class RpsRunner {
+
     private static boolean playAgain(Scanner scanner){
-        System.out.println("Do You want to play again (n) or end (x) ?");
+        System.out.println("Do You want to play (n) or end (x) ?");
         switch (scanner.next()){
             case "n":
-                System.out.println("Rock, Paper, Scissors!");
-                return true;
-            default:
-                System.out.println("Thanks for playing Dude!");
-                return false;
+                if(areYouSure(scanner)) {
+                    System.out.println("Rock, Paper, Scissors!");
+                    return true;
+                } else {
+                    return false ;
+                }
+             case "x" :
+                 if(areYouSure(scanner)) {
+                     return false;
+                 } else {
+                     return true ;
+                 }
+
+                default:
+                    System.out.println("Invalid option!");
+                    break;
         }
+        return false;
+    }
+
+    private static boolean areYouSure(Scanner scanner){
+        System.out.println("Are You sure y/n ?");
+        switch (scanner.next()){
+            case "y" :
+                return true;
+             case   "n":
+                return false;
+            default:
+                System.out.println("Invalid option!");
+                break;
+        }
+
+        return false;
     }
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         RPSPlayer computer = new RandomComputerPlayer(new Random());
         RPSPlayer human = new HumanPlayer(scanner);
 
+        int humanScore = 0 ;
+        int comScore = 0 ;
+
+        String first_name;
+        int endingScore;
+
+
+        System.out.print("Enter your name: ");
+        first_name = scanner.next();
+
+        System.out.print("How much wins to end? ");
+        endingScore = scanner.nextInt();
+
+
+
+
         System.out.println("Rock Paper Scissors");
-        do {
+        while (playAgain(scanner)){
             String com = computer.play();
             String player = human.play();
 
             System.out.println(com + " <-> "+ player);
             if (player.equals(com)){
                 System.out.println("TIE!");
+                System.out.println(first_name + " vs Computer: " + humanScore + "<->" + comScore);
 
             } else if (("Rock".equals(player) && "Scissors".equals(com)) ||
                     ("Scissors".equals(player) && "Paper".equals(com)) ||
                     ("Paper".equals(player) && "Rock".equals(com)) ) {
-                System.out.println("Human Player wins!");
+                System.out.println(first_name + " wins!");
+                humanScore++;
+                System.out.println(first_name + " vs Computer: " + humanScore + "<->" + comScore);
             } else {
                 assert (("Rock".equals(com) && "Scissors".equals(player)) ||
                         ("Scissors".equals(com) && "Paper".equals(player)) ||
                         ("Paper".equals(com) && "Rock".equals(player)));
-                System.out.println("Human Player lost!");
+                System.out.println(first_name + " lost!");
+                comScore++;
+                System.out.println(first_name + " vs Computer: " + humanScore + "<->" + comScore);
             }
-        } while (playAgain(scanner));
+            if(humanScore == endingScore || comScore == endingScore){
+                System.out.println("Ending Score!");
+                break;
+            }
+        }
 
 
     }
