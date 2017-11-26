@@ -9,20 +9,11 @@ public class RpsRunner {
         System.out.println("Do You want to play (n) or end (x) ?");
         switch (scanner.next()){
             case "n":
-                if(areYouSure(scanner)) {
-                    System.out.println("Rock, Paper, Scissors!");
-                    return true;
-                } else {
-                    return false ;
-                }
+                return areYouSure(scanner);
              case "x" :
-                 if(areYouSure(scanner)) {
-                     return false;
-                 } else {
-                     return true ;
-                 }
+                 return !areYouSure(scanner);
 
-                default:
+             default:
                     System.out.println("Invalid option!");
                     break;
         }
@@ -43,6 +34,12 @@ public class RpsRunner {
 
         return false;
     }
+
+    private static void checkScore(String name, int p1, int p2){
+        System.out.println(name + " vs Computer: " + p1 + "<->" + p2);
+    }
+
+
     public static void main(String[] args){
         Scanner scanner = new Scanner(System.in);
         RPSPlayer computer = new RandomComputerPlayer(new Random());
@@ -62,8 +59,6 @@ public class RpsRunner {
         endingScore = scanner.nextInt();
 
 
-
-
         System.out.println("Rock Paper Scissors");
         while (playAgain(scanner)){
             String com = computer.play();
@@ -73,20 +68,21 @@ public class RpsRunner {
             if (player.equals(com)){
                 System.out.println("TIE!");
                 System.out.println(first_name + " vs Computer: " + humanScore + "<->" + comScore);
+                checkScore(first_name,humanScore,comScore);
 
             } else if (("Rock".equals(player) && "Scissors".equals(com)) ||
                     ("Scissors".equals(player) && "Paper".equals(com)) ||
                     ("Paper".equals(player) && "Rock".equals(com)) ) {
                 System.out.println(first_name + " wins!");
                 humanScore++;
-                System.out.println(first_name + " vs Computer: " + humanScore + "<->" + comScore);
+                checkScore(first_name,humanScore,comScore);
             } else {
                 assert (("Rock".equals(com) && "Scissors".equals(player)) ||
                         ("Scissors".equals(com) && "Paper".equals(player)) ||
                         ("Paper".equals(com) && "Rock".equals(player)));
                 System.out.println(first_name + " lost!");
                 comScore++;
-                System.out.println(first_name + " vs Computer: " + humanScore + "<->" + comScore);
+                checkScore(first_name,humanScore,comScore);
             }
             if(humanScore == endingScore || comScore == endingScore){
                 System.out.println("Ending Score!");
