@@ -22,7 +22,7 @@ public class FlightFinder {
         if (flightsToFly.containsKey(flight.getArrivalAirport())) {
 
             Map<String, Boolean> resultMap = flightsToFly.entrySet().stream()
-                    .filter(f -> f.getKey().equals(flight.getArrivalAirport()))
+                    .filter(f -> f.getKey().equals(flight.getArrivalAirport()) && f.getValue())
                     .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
             if (resultMap.size() == 0) {
