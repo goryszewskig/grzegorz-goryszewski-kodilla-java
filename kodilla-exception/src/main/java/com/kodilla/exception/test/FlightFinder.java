@@ -22,8 +22,8 @@ public class FlightFinder {
         if (flightsToFly.containsKey(flight.getArrivalAirport())) {
 
             Map<String, Boolean> resultMap = flightsToFly.entrySet().stream()
-                    .filter(f -> f.getKey().equals(flight.getArrivalAirport()) && f.getValue() == true)
-                    .collect(Collectors.toMap(m -> m.getKey(), m -> m.getValue()));
+                    .filter(f -> f.getKey().equals(flight.getArrivalAirport()))
+                    .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
 
             if (resultMap.size() == 0) {
                 System.out.println("No flight to your destination");
