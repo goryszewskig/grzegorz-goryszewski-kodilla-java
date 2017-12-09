@@ -8,10 +8,11 @@ public class InboundFlightBrowser implements FlightBrowser {
     private FlightDatabase flightDatabase = new FlightDatabase();
     private HashMap<String,String[]> mapOfFlights = flightDatabase.getFlightDatabase();
 
-    private List<String> flightList = new ArrayList<>();
+
 
     @Override
     public String search(String airport) {
+        List<String> flightList = new ArrayList<>();
         for(Map.Entry<String,String[]> entry: mapOfFlights.entrySet()){
             Arrays.stream(entry.getValue())
                     .filter(f->f.contains(airport))

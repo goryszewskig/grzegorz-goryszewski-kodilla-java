@@ -10,10 +10,11 @@ public class OutboundFlightBrowser implements FlightBrowser {
     private FlightDatabase flightDatabase = new FlightDatabase();
     private HashMap<String, String[]> mapOfFlights = flightDatabase.getFlightDatabase();
 
-    private List<String> flightList = new ArrayList<>();
+
 
     @Override
     public String search(String airport) {
+        List<String> flightList = new ArrayList<>();
         flightList = Arrays.stream(mapOfFlights.get(airport))
         .collect(Collectors.toList());
 

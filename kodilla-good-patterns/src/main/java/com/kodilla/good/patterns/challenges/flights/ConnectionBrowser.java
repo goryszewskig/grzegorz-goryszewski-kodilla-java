@@ -11,21 +11,23 @@ public class ConnectionBrowser {
     private FlightDatabase flightDatabase = new FlightDatabase();
     private HashMap<String,String[]> mapOfFlights = flightDatabase.getFlightDatabase();
 
-    private List<String> flightList = new ArrayList<>();
+
 
     public boolean checkIfDirect(String start, String end){
         List<String> flightConnectionEntry = Arrays.stream(mapOfFlights.get(start))
                 .collect(Collectors.toList());
 
-        if(flightConnectionEntry.contains(end)) {
-            return true;
-        }else{
-            return false;
-        }
+//        if(flightConnectionEntry.contains(end)) {
+//            return true;
+//        }else{
+//            return false;
+//        }
+        return (flightConnectionEntry.contains(end));
     }
 
     public String search(String start, String end){
 
+        List<String> flightList = new ArrayList<>();
         if(!checkIfDirect(start,end)){
             for(String entryVal: mapOfFlights.get(start)){
                 Arrays.stream((mapOfFlights.get(entryVal)))
