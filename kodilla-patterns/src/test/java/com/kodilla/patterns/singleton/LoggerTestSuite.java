@@ -1,9 +1,7 @@
 package com.kodilla.patterns.singleton;
 
-import com.kodila.patterns.singleton.Logger;
 import org.junit.Assert;
 import org.junit.Test;
-import sun.rmi.runtime.Log;
 
 public class LoggerTestSuite {
     @Test

@@ -1,8 +1,5 @@
 package com.kodilla.patterns.prototype;
 
-import com.kodila.patterns.prototype.Board;
-import com.kodila.patterns.prototype.Task;
-import com.kodila.patterns.prototype.TasksList;
 import org.junit.Assert;
 import org.junit.Test;
 

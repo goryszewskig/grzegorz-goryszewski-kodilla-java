@@ -1,7 +1,5 @@
 package com.kodilla.patterns.prototype.library;
 
-import com.kodila.patterns.prototype.library.Book;
-import com.kodila.patterns.prototype.library.Library;
 import org.junit.Assert;
 import org.junit.Test;
 
