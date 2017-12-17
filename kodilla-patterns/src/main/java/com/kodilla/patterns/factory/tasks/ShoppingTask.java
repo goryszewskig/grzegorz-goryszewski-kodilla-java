@@ -7,7 +7,8 @@ public class ShoppingTask implements Task {
     final String taskName;
     final String whatToBuy;
     final double quantity;
-    final Set<String> taskList = new HashSet<>();
+    //final Set<String> taskList = new HashSet<>();
+    private boolean taskExecuted = false;
 
     public ShoppingTask(final String taskName, final String whatToBuy, final double quantity) {
         this.taskName = taskName;
@@ -18,7 +19,7 @@ public class ShoppingTask implements Task {
     @Override
     public void executeTask() {
         System.out.println("buy: " + whatToBuy + ", amount: " + quantity);
-        taskList.add(taskName);
+        taskExecuted = true;
     }
 
     @Override
@@ -28,6 +29,6 @@ public class ShoppingTask implements Task {
 
     @Override
     public boolean isTaskExecuted() {
-        return taskList.contains(taskName);
+        return taskExecuted ;
     }
 }

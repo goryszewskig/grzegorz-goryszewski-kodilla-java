@@ -7,7 +7,8 @@ public final class PaintingTask implements Task{
     final String taskName;
     final String color;
     final String whatToPaint;
-    final Set<String> taskList = new HashSet<>();
+    //final Set<String> taskList = new HashSet<>();
+    private boolean taskExecuted = false;
 
     public PaintingTask(String taskName, String color, String whatToPaint) {
         this.taskName = taskName;
@@ -18,7 +19,7 @@ public final class PaintingTask implements Task{
     @Override
     public void executeTask() {
         System.out.println("Paint: " + whatToPaint + " in color: " + color);
-        taskList.add(taskName);
+        taskExecuted = true;
     }
 
     @Override
@@ -28,7 +29,7 @@ public final class PaintingTask implements Task{
 
     @Override
     public boolean isTaskExecuted() {
-        return taskList.contains(taskName);
+        return taskExecuted;
     }
 
 }
