@@ -1,0 +1,45 @@
+show databases;
+use kodilla_course ;
+
+show tables;
+
+create table ISSUESLISTS
+(
+ID SERIAL PRIMARY KEY,
+NAME VARCHAR(1000)
+);
+
+create table ISSUESS
+(
+ID SERIAL PRIMARY KEY,
+ISSUESLIST_ID BIGINT UNSIGNED NOT NULL,
+SUMMARY VARCHAR(1024),
+DESCRIPTION VARCHAR(1024),
+USER_ID_ASSIGNEDTO BIGINT UNSIGNED NOT NULL,
+FOREIGN KEY (ISSUESLIST_ID) REFERENCES ISSUESLISTS(ID),
+FOREIGN KEY (USER_ID_ASSIGNEDTO) REFERENCES USERS(ID)
+);
+
+insert into issueslists (name) values("ToDo");
+insert into issueslists (name) values("In progress");
+insert into issueslists (name) values("Done");
+
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (1,"Add feature A","Add html table 1",1);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (1,"Add feature B","Add html table 2",1);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (1,"Add feature C","Add html table 3",1);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (1,"Add feature D","Add html table 4",1);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (1,"Add feature E","Add html table 5",1);
+
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (2,"Adding feature 1","Adding html table 11",2);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (2,"Adding feature 2","Adding html table 12",2);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (2,"Adding feature 3","Adding html table 13",2);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (2,"Adding feature 4","Adding html table 14",2);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (2,"Adding feature 5","Adding html table 15",2);
+
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (3,"Added feature Z1","Add html table Z1",3);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (3,"Added feature Z2","Add html table Z2",3);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (3,"Added feature Z3","Add html table Z3",3);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (3,"Added feature Z4","Add html table Z4",3);
+insert into issuess (ISSUESLIST_ID,SUMMARY,DESCRIPTION,USER_ID_ASSIGNEDTO) values (3,"Added feature Z5","Add html table Z5",3);
+
+commit;
