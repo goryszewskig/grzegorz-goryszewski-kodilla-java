@@ -1,3 +1,4 @@
+/* 12.3 */
 show databases;
 use kodilla_course ;
 
