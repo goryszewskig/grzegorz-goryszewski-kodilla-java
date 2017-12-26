@@ -1,0 +1,13 @@
+/* 12.3 */
+show databases;
+use kodilla_course ;
+
+show tables;
+
+select s1.id, s1.ISSUESLIST_ID, s1.SUMMARY, s1.DESCRIPTION, s1.USER_ID_ASSIGNEDTO, s2.name from issuess s1 , issueslists s2 where s1.ISSUESLIST_ID = s2.ID;
+
+select s1.id, s1.ISSUESLIST_ID, s1.SUMMARY, s1.DESCRIPTION, s1.USER_ID_ASSIGNEDTO, u.FIRSTNAME , u.LASTNAME from issuess s1 , users u where s1.USER_ID_ASSIGNEDTO = u.ID;
+
+select count(s1.USER_ID_ASSIGNEDTO) number_of_assigned_tasks, u.FIRSTNAME , u.LASTNAME from issuess s1 , users u where s1.USER_ID_ASSIGNEDTO = u.ID group by u.FIRSTNAME, u.LASTNAME;
+
+
