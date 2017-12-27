@@ -7,6 +7,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -16,7 +17,7 @@ public class TaskListDaoTestSuite {
     @Autowired
     private TaskListDao taskListDao;
     private static final String NAME = "shopping list";
-    private static final String DESCRIPTION = "what to buy";
+    private static final String DESCRIPTION = "buy those products";
 
     @Test
     public void testFindByListName() {
@@ -36,6 +37,4 @@ public class TaskListDaoTestSuite {
         int id = readLists.get(0).getId();
         taskListDao.delete(id);
     }
-
-
 }
