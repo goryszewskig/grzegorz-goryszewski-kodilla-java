@@ -5,6 +5,11 @@ import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
+@NamedQuery(
+        name = "Company.searchCompanyByName",
+        query = "FROM Company WHERE name LIKE CONCAT(:SEARCHKEY, '%')"
+)
+
 @NamedNativeQuery(
         name = "Company.retrieveCompaniesStartWith",
         query = "SELECT * FROM companies WHERE" +

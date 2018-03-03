@@ -2,26 +2,56 @@ package com.kodilla.testing;
 
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.Set;
 
 
 public class Zadanie {
     public static void main(String[] args) {
-        int[] lista = new int[] {1, 2, 4, 5};
-        int result = solution(lista);
-        wyswietlWynik(lista, result);
 
-        int[] lista2 = new int[] {1, 4, 8, 3, 2};
-        int result2 = solution(lista2);
-        wyswietlWynik(lista2, result2);
+        Set<Integer> mojeLiczby = new HashSet<Integer>();
 
-        int[] lista3 = new int[] {-3, -1};
-        int result3 = solution(lista3);
-        wyswietlWynik(lista3, result3);
 
-        int[] lista4 = new int[] {1, 3, 6, 4, 1, 2};
-        int result4 = solution(lista4);
-        wyswietlWynik(lista4, result4);
+        mojeLiczby.add(1);
+        mojeLiczby.add(2);
+        mojeLiczby.add(3);
+        mojeLiczby.add(4);
+        mojeLiczby.add(5);
+        mojeLiczby.add(6);
+
+        int iloscWykonan = 0 ;
+        Long suma = 0L ;
+        while(iloscWykonan<10) {
+            suma += maszynaLosujaca(mojeLiczby);
+            iloscWykonan++;
+        }
+        System.out.println("iloscWykonan: " + iloscWykonan + " srednia: " + suma/iloscWykonan);
+    }
+    public static int maszynaLosujaca(Set<Integer> mojeLiczby){
+        Set<Integer> wylosowaneLiczby = new HashSet<Integer>();
+        wylosowaneLiczby = generator();
+        int counter = 0 ;
+
+        while (!mojeLiczby.equals(wylosowaneLiczby)) {
+            counter++;
+            wylosowaneLiczby = generator();
+
+
+        }
+        System.out.println("Bingo! after: " + counter);
+        return counter;
+    }
+
+    public static Set<Integer> generator(){
+        Random liczby = new Random();
+
+        Set<Integer> wylosowane = new HashSet<>();
+
+        while(wylosowane.size() < 6 ){
+            wylosowane.add(liczby.nextInt(49)+1);
+
+        }
+        return wylosowane;
     }
 
     public static void wyswietlWynik(int[] arr, int result) {

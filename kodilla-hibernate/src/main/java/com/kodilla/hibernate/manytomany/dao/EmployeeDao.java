@@ -13,6 +13,9 @@ import java.util.List;
 public interface EmployeeDao extends CrudRepository<Employee, Integer> {
 
     @Query
+    List<Employee> searchEmployeeByLastName(@Param("SEARCHKEY") String searchKey);
+
+    @Query
     List<Employee> retrieveEmployeeByLastname(@Param("LASTNAME") String lastname);
 
     @Query(value = "SELECT * FROM employees WHERE firstname LIKE :ARG " +
