@@ -22,7 +22,7 @@ public class SearchService {
 
     public List<Company> searchCompaniesByName(final String searchKey) throws SearchServiceException{
         List<Company> companySearchResult = companyDao.searchCompanyByName(searchKey);
-        if(companySearchResult.size() == 0){
+        if(companySearchResult.isEmpty()){
             LOGGER.info(SearchServiceException.ERR_COMPANY_NOT_FOUND);
             throw new SearchServiceException(SearchServiceException.ERR_COMPANY_NOT_FOUND);
             } else {
@@ -32,7 +32,7 @@ public class SearchService {
 
     public List<Employee> searchEmployeeByLastName(final String searchKey) throws SearchServiceException{
         List<Employee> employeeSearchResult = employeeDao.searchEmployeeByLastName(searchKey);
-        if(employeeSearchResult.size() == 0){
+        if(employeeSearchResult.isEmpty()){
             LOGGER.info(SearchServiceException.ERR_EMPLOYEE_NOT_FOUND);
             throw new SearchServiceException(SearchServiceException.ERR_EMPLOYEE_NOT_FOUND);
         } else {
